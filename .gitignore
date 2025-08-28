@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual env
+.venv/
+venv/
+ENV/
+
+# Local data
+*.db
+*.log
+data.json
+
+# Env files
+.env
+*.env
+/etc/*.env
+
+# OS/IDE
+.DS_Store
+.idea/
+.vscode/
