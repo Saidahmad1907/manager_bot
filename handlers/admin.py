@@ -95,15 +95,16 @@ async def statistics(message: types.Message):
 
 async def admin_panel(message: types.Message):
     admin_id = get_session_admin_id(message.from_user.id)
-    if admin_id:
+    if not admin_id:
+        await message.answer("Avval tizimga kiring: /login <login> <parol>")
+        return
+
     kb = ReplyKeyboardMarkup(resize_keyboard=True)
     kb.row(KeyboardButton("Mening shikoyatlarim"), KeyboardButton("Mening jarimalarim"))
     kb.row(KeyboardButton("Shikoyatni hal qilish"), KeyboardButton("Jarimani to'lash"))
     kb.row(KeyboardButton("Mening statistikam"), KeyboardButton("Yangilash"))
     kb.row(KeyboardButton("Yordam"))
     await message.answer("Admin paneliga xush kelibsiz! Quyidagi tugmalardan foydalaning.", reply_markup=kb)
-    else:
-        await message.answer("Avval tizimga kiring: /login <login> <parol>")
 
 # Admin o‘ziga biriktirilgan ochiq shikoyatlarni ko‘radi
 async def my_complaints(message: types.Message):
